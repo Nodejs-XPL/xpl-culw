@@ -2,17 +2,18 @@
   "name": "xpl-culw",
   "version": "0.1.0",
   "description": "xpl-culw",
-  "main": "hello-world-server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified! Configure in package.json\" && exit 1"
-  },
+  "main": "xpl-culw.js",
   "repository": "",
+  "dependencies": {
+	  "xpl-api": "latest",
+  },
   "keywords": [
     "Node.js",
-    "Eclipse",
-    "Nodeclipse"
+    "Node",
+    "XPL",
+    "CUL", "CULW", "CC1101"
   ],
-  "author": "",
-  "license": "BSD",
+  "author": "Olivier Oeuillot",
+  "license": "GPL",
   "readmeFilename": "README.md"
 }
