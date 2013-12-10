@@ -1,11 +1,13 @@
 {
   "name": "xpl-culw",
   "version": "0.1.0",
-  "description": "xpl-culw",
+  "description": "XPL bridge for CULW",
   "main": "xpl-culw.js",
   "repository": "",
   "dependencies": {
-	  "xpl-api": "latest",
+	  "xpl-api": ">=1.0.2",
+	  "commander": "latest",
+	  "serialport": "latest"
   },
   "keywords": [
     "Node.js",
