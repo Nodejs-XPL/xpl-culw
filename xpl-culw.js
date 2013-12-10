@@ -32,6 +32,19 @@ program.command('listSerialPort').description("List serial ports").action(
 program.command('start').description("Start processing CULW datas").action(
 		function() {
 			console.log("Start");
+			
+			if (!program.serialPort) {
+				switch(os.platform()) {
+				case "win32":
+					program.serialPort="COM4";
+					break;
+				case "linux":
+					program.serialPort="/dev/serial/by-id/usb-busware.de_CUL868-if00";
+					break;
+				}
+				
+				console.log("Use default serial port : "+program.serialPort);
+			}
 
 			var sp = new serialport.SerialPort(program.serialPort, {
 				baudrate : 9600,
@@ -53,8 +66,13 @@ program.command('start').description("Start processing CULW datas").action(
 					console.log("Serial device '" + program.serialPort
 							+ "' opened.");
 
-					if (!program.source) {
-						program.source="culw." + os.hostname();
+					if (!program.xplSource) {
+						var hostName=os.hostname();
+						if (hostName.indexOf('.')>0) {
+							hostName=hostName.substring(0, hostName.indexOf('.'));
+						}
+
+						program.xplSource="culw." + hostName;
 					}
 					
 					var xpl = new Xpl(program);

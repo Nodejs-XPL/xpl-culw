@@ -5,16 +5,15 @@
   "main": "xpl-culw.js",
   "repository": "",
   "dependencies": {
-	  "xpl-api": ">=1.0.2",
+	  "xpl-api": ">=1.0.3",
 	  "commander": "latest",
 	  "serialport": "latest"
   },
   "keywords": [
-    "Node.js",
-    "Node",
     "XPL",
     "CUL", "CULW", "CC1101"
   ],
+  "repository": { "type": "git", "url": "https://github.com/oeuillot/xpl-culw.git" },
   "author": "Olivier Oeuillot",
   "license": "GPL",
   "readmeFilename": "README.md"
