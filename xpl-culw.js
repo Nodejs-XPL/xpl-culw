@@ -1,15 +1,15 @@
 var Xpl = require("xpl-api");
-var program = require('commander');
+var commander = require('commander');
 var serialport = require("serialport");
 var CulwSerial = require('./lib/culw-serial');
 var os = require('os');
 
-program.version('0.0.1')
+commander.version(require("./package.json").version)
 		.option("-s, --serialPort <path>", "Serial device path");
 
-Xpl.fillCommander(program);
+Xpl.fillCommander(commander);
 
-program.command('listSerialPort').description("List serial ports").action(
+commander.command('listSerialPort').description("List serial ports").action(
 		function() {
 
 			console.log("List serial ports:");
@@ -29,24 +29,24 @@ program.command('listSerialPort').description("List serial ports").action(
 			});
 		});
 
-program.command('start').description("Start processing CULW datas").action(
+commander.command('start').description("Start processing CULW datas").action(
 		function() {
 			console.log("Start");
 			
-			if (!program.serialPort) {
+			if (!commander.serialPort) {
 				switch(os.platform()) {
 				case "win32":
-					program.serialPort="COM4";
+					commander.serialPort="COM4";
 					break;
 				case "linux":
-					program.serialPort="/dev/serial/by-id/usb-busware.de_CUL868-if00";
+					commander.serialPort="/dev/serial/by-id/usb-busware.de_CUL868-if00";
 					break;
 				}
 				
-				console.log("Use default serial port : "+program.serialPort);
+				console.log("Use default serial port : "+commander.serialPort);
 			}
 
-			var sp = new serialport.SerialPort(program.serialPort, {
+			var sp = new serialport.SerialPort(commander.serialPort, {
 				baudrate : 9600,
 				databits : 8,
 				stopbits : 1,
@@ -59,23 +59,23 @@ program.command('start').description("Start processing CULW datas").action(
 				try {
 					if (error) {
 						console.log("Can not open serial device '"
-								+ program.serialPort + "'", error);
+								+ commander.serialPort + "'", error);
 						process.exit(1);
 						return;
 					}
-					console.log("Serial device '" + program.serialPort
+					console.log("Serial device '" + commander.serialPort
 							+ "' opened.");
 
-					if (!program.xplSource) {
+					if (!commander.xplSource) {
 						var hostName=os.hostname();
 						if (hostName.indexOf('.')>0) {
 							hostName=hostName.substring(0, hostName.indexOf('.'));
 						}
 
-						program.xplSource="culw." + hostName;
+						commander.xplSource="culw." + hostName;
 					}
 					
-					var xpl = new Xpl(program);
+					var xpl = new Xpl(commander);
 
 					xpl.on("error", function(error) {
 						console.log("XPL error", error);
@@ -133,4 +133,4 @@ program.command('start').description("Start processing CULW datas").action(
 			});
 		});
 
-program.parse(process.argv);
+commander.parse(process.argv);
