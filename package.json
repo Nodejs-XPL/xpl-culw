@@ -17,6 +17,7 @@
   "files": [
     "xpl-culw.js",
     "lib/culw-serial.js",
+    "bin/nxpl-culw"
 	],
   "repository": { "type": "git", "url": "https://github.com/oeuillot/xpl-culw.git" },
   "author": "Olivier Oeuillot",
