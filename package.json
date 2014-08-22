@@ -1,13 +1,12 @@
 {
   "name": "xpl-culw",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "XPL bridge for CULW",
-  "main": "./lib/culw-serial.js",
-  "bin": "./xpl-culw.js",
+  "bin": "xpl-culw.js",
   "dependencies": {
-	  "xpl-api": ">=1.0.10",
-	  "commander": "latest",
-	  "serialport": "latest"
+	  "xpl-api": ">=1.0.11",
+	  "commander": "~2.3",
+	  "serialport": "~1.4"
   },
   "keywords": [
     "XPL",
