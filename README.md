@@ -2,7 +2,7 @@
 
 ## Objective
 
-CULW bridge for XPL layer
+XPL bridge for CULW   (Tested with CUL868)
 
 ## Installation
 

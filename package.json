@@ -1,10 +1,10 @@
 {
   "name": "xpl-culw",
-  "version": "1.0.2",
+  "version": "1.0.5",
   "description": "XPL bridge for CULW",
   "bin": {
-  	"nxpl-culw": "./bin/nxpl-culw"
-  }
+  	"xpl-culw": "./bin/xpl-culw"
+  },
   "dependencies": {
 	  "xpl-api": ">=1.0.12",
 	  "commander": "~2.3",
@@ -17,7 +17,7 @@
   "files": [
     "xpl-culw.js",
     "lib/culw-serial.js",
-    "bin/nxpl-culw"
+    "bin/xpl-culw"
 	],
   "repository": { "type": "git", "url": "https://github.com/oeuillot/xpl-culw.git" },
   "author": "Olivier Oeuillot",
