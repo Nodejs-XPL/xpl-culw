@@ -7,6 +7,8 @@ var os = require('os');
 commander.version(require("./package.json").version).option(
     "-s, --serialPort <path>", "Serial device path");
 
+commander.option("--heapDump", "Enable heap dump (require heapdump)");
+
 Xpl.fillCommander(commander);
 
 commander.command('listSerialPort').description("List serial ports").action(
@@ -135,3 +137,8 @@ commander
         });
 
 commander.parse(process.argv);
+
+if (commander.headDump) {
+  var heapdump = require("heapdump");
+  console.log("***** HEAPDUMP enabled **************");
+}
