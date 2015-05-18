@@ -7,7 +7,7 @@ var os = require('os');
 commander.version(require("./package.json").version).option("-s, --serialPort <path>", "Serial device path");
 
 commander.option("--heapDump", "Enable heap dump (require heapdump)");
-commander.option("--deviceAliases", "Device aliases (path or string)");
+commander.option("--deviceAliases <path>", "Device aliases (path or string)");
 
 Xpl.fillCommander(commander);
 
