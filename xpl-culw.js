@@ -3,6 +3,7 @@ var commander = require('commander');
 var serialport = require("serialport");
 var CulwSerial = require('./lib/culw-serial');
 var os = require('os');
+var debug = require('debug')('xpl-culw');
 
 commander.version(require("./package.json").version).option("-s, --serialPort <path>", "Serial device path");
 
@@ -50,6 +51,8 @@ commander.command('start').description("Start processing CULW datas").action(fun
 		} else {
 			commander.deviceAliases = require(deviceAliases);
 		}
+
+		debug("DeviceAliases=", deviceAliases);
 	}
 
 	if (!commander.serialPort) {
@@ -116,6 +119,8 @@ commander.command('start').description("Start processing CULW datas").action(fun
 
 					if (deviceAliases) {
 						var da = deviceAliases[body.device];
+
+						debug("Alias '" + body.device + "' => " + da);
 						if (da) {
 							body.device = da;
 						}
@@ -131,13 +136,13 @@ commander.command('start').description("Start processing CULW datas").action(fun
 					}
 
 					sp.on('data', function(data) {
-						// console.log('data received: ' + data+"'");
+						debug('data received: ' + data + "'");
 
 						culw.processSerialData(data);
 					});
 
 					sp.on('close', function() {
-						console.log('close received: ' + data);
+						debug('close received: ' + data);
 
 						culw.close();
 
