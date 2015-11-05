@@ -136,13 +136,15 @@ commander.command('start').description("Start processing CULW datas").action(fun
 					}
 
 					sp.on('data', function(data) {
-						debug('data received: ' + data + "'");
+						if (debug.enabled) {
+							debug('data received: ' + data + "'");
+						}
 
 						culw.processSerialData(data);
 					});
 
 					sp.on('close', function() {
-						debug('close received: ' + data);
+						debug('close received');
 
 						culw.close();
 
