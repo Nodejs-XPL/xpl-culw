@@ -20,7 +20,7 @@
     "lib/culw-serial.js",
     "bin/xpl-culw"
 	],
-  "repository": { "type": "git", "url": "https://github.com/oeuillot/xpl-culw.git" },
+  "repository": { "type": "git", "url": "https://github.com/Nodejs-XPL/xpl-culw.git" },
   "author": "Olivier Oeuillot",
   "license": "GPL",
   "readmeFilename": "README.md"

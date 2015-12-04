@@ -1,3 +1,6 @@
+/*jslint node: true, vars: true, nomen: true */
+'use strict';
+
 var Xpl = require("xpl-api");
 var commander = require('commander');
 var serialport = require("serialport");
