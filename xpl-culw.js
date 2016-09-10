@@ -64,9 +64,8 @@ commander
 			parity: 'none',
 			rtscts: false,
 			parser: Serialport.parsers.readline("\n")
-		});
-
-		sp.on("open", (error) => {
+			
+		}, (error) => {
 			try {
 				if (error) {
 					console.error("Can not open serial device",
@@ -151,6 +150,14 @@ commander
 			} catch (x) {
 				console.error(x);
 			}
+		});
+
+		sp.on('error', (error) => {
+			console.error('error event=', error);
+		});
+
+		sp.on('disconnect', (error) => {
+			console.error('disconnect event=', error);
 		});
 	});
 
