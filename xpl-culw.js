@@ -61,7 +61,7 @@ commander
 			stopbits: 1,
 			parity: 'none',
 			rtscts: false,
-			parser: serialport.parsers.readline("\n")
+			parser: Serialport.parsers.readline("\n")
 		});
 
 		sp.on("open", (error) => {
