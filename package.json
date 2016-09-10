@@ -1,6 +1,6 @@
 {
   "name": "xpl-culw",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "XPL bridge for CULW",
   "bin": {
   	"xpl-culw": "./bin/xpl-culw"
@@ -8,7 +8,7 @@
   "dependencies": {
 	  "xpl-api": ">=1.0.12",
 	  "commander": "~2.3",
-	  "serialport": "~2.0",
+    "serialport": "~4.0",
 	  "debug": "~2.2"
   },
   "keywords": [
