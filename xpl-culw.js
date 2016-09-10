@@ -19,12 +19,14 @@ Xpl.fillCommander(commander);
 commander.command('listSerialPort').description("List serial ports").action(()=> {
 
 		console.log("List serial ports:");
-		serialport.list((err, ports) => {
+		Serialport.list((err, ports) => {
 			if (err) {
-				console.log("End of list");
+				console.error("End of list" ,err);
 
 				process.exit(0);
+				return;
 			}
+
 			ports.forEach((port) => {
 				console.log("  Port name='" + port.comName + "' pnpId='" +
 					port.pnpId + "' manufacturer='" + port.manufacturer + "'");
