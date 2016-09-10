@@ -21,7 +21,7 @@ commander.command('listSerialPort').description("List serial ports").action(()=>
 		console.log("List serial ports:");
 		Serialport.list((err, ports) => {
 			if (err) {
-				console.error("End of list" ,err);
+				console.error("End of list", err);
 
 				process.exit(0);
 				return;
@@ -101,7 +101,7 @@ commander
 
 					console.log("Xpl bind succeed ");
 
-					new CulwSerial(function (data, callback) {
+					new CulwSerial((data, callback) => {
 						// console.log("Write '" + data + "'");
 						sp.write(data, callback);
 
@@ -120,6 +120,8 @@ commander
 						xpl.sendXplTrig(body, callback);
 
 					}, commander, (error, culw) => {
+						debug("CulwSerial initialized");
+
 						if (error) {
 							console.error("Can not initialize CULW engine ", error);
 							process.exit(3);
@@ -127,9 +129,7 @@ commander
 						}
 
 						sp.on('data', (data) => {
-							if (debug.enabled) {
-								debug('data received: ' + data + "'");
-							}
+							debug('data received:', data);
 
 							culw.processSerialData(data);
 						});
